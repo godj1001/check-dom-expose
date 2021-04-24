@@ -1,6 +1,6 @@
 {
   "name": "check-dom-expose",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "check dom expose on viewport",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "author": "groove",
   "license": "ISC",
+  "keywords": ["dom expose"],
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "rollup-plugin-babel": "^4.4.0"

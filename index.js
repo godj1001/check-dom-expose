@@ -49,6 +49,16 @@ const DomExpose = (root,children) => {
   })
   for (let child of localChildren){
     child.expose = checkExpose(child.scrollTop,child.scrollBottom,root.clientHeight,root.scrollTop,root.offsetTop)
+    if (child.expose){
+      window.dispatchEvent(new CustomEvent('domExpose',{
+        'detail': {
+          element: child,
+          domExpose: expose
+        },
+        bubbles: false,
+        cancelable: false
+      }))
+    }
   }
   let fn = throttle()
   /**
@@ -73,9 +83,12 @@ const DomExpose = (root,children) => {
     })
   })
 }
-
+/**
+ * @description remove eventListener
+ */
 const closeDomExpose = (root) => {
   root.removeEventListener('scroll')
+  window.removeEventListener('domExpose')
 }
 
 export {
